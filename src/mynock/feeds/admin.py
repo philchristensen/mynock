@@ -1,3 +1,9 @@
+# mynock
+# Copyright (c) 2011 Phil Christensen
+#
+#
+# See LICENSE for details
+
 from django.contrib import admin
 from mynock.feeds.models import Feed, FeedItem
 

@@ -1,3 +1,9 @@
+# mynock
+# Copyright (c) 2011 Phil Christensen
+#
+#
+# See LICENSE for details
+
 from django.core.management.base import BaseCommand, CommandError
 from mynock.feeds.models import Feed
 

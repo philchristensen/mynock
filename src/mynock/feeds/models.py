@@ -1,3 +1,9 @@
+# mynock
+# Copyright (c) 2011 Phil Christensen
+#
+#
+# See LICENSE for details
+
 import os.path
 
 from django.db import models
