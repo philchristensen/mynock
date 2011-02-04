@@ -6,4 +6,6 @@ class Command(BaseCommand):
     help = 'Scans feeds for new entries.'
 
     def handle(self, *args, **options):
-        self.stdout.write('Retrieving new items for feeds\n')
+        for feed in Feed.objects.all():
+        	for item in feed.get_new_items():
+        		self.stdout.write("Downloaded %s from %s\n" % (item.filename, feed.url))
