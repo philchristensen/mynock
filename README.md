@@ -1,10 +1,9 @@
-```
-# mynock
-# Copyright (c) 2011 Phil Christensen
-#
-#
-# See LICENSE for details
-```
+    # mynock
+    # Copyright (c) 2011 Phil Christensen
+    #
+    #
+    # See LICENSE for details
+
 
 mynock was created because I wanted a reasonably configurable and hackable to run on my low-power NAS array.
 
