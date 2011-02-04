@@ -1,3 +1,9 @@
+# mynock
+# Copyright (c) 2011 Phil Christensen
+#
+#
+# See LICENSE for details
+
 # Django settings for mynock project.
 
 DEBUG = True

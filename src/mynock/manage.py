@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+
+# mynock
+# Copyright (c) 2011 Phil Christensen
+#
+#
+# See LICENSE for details
+
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.

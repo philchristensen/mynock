@@ -1,3 +1,9 @@
+# mynock
+# Copyright (c) 2011 Phil Christensen
+#
+#
+# See LICENSE for details
+
 from django.conf.urls.defaults import patterns, include
 
 # Uncomment the next two lines to enable the admin:
