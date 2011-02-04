@@ -14,6 +14,9 @@ class Feed(models.Model):
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.url
+
     def get_new_items(self):
         parser = feedparser.parse(self.url)
         for entry in parser['items']:
@@ -36,6 +39,9 @@ class FeedItem(models.Model):
     title = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
     filename = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.filename
 
     def download_attachment(self):
         data = None

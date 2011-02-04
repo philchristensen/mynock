@@ -9,6 +9,10 @@ from mynock.feeds.models import Feed, FeedItem
 
 class FeedItemInline(admin.TabularInline):
     model = FeedItem
+    fields = ('url',)
+
+class FeedItemAdmin(admin.ModelAdmin):
+    list_display = ('filename', 'feed')
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ('name', 'url')
@@ -16,9 +20,6 @@ class FeedAdmin(admin.ModelAdmin):
     inlines = [
         FeedItemInline,
     ]
-
-class FeedItemAdmin(admin.ModelAdmin):
-    pass
 
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(FeedItem, FeedItemAdmin)
