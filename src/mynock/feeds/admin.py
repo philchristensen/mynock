@@ -1,8 +1,15 @@
 from django.contrib import admin
 from mynock.feeds.models import Feed, FeedItem
 
+class FeedItemInline(admin.TabularInline):
+    model = FeedItem
+
 class FeedAdmin(admin.ModelAdmin):
-	list_display = ('name', 'url')
+    list_display = ('name', 'url')
+
+    inlines = [
+        FeedItemInline,
+    ]
 
 class FeedItemAdmin(admin.ModelAdmin):
     pass
