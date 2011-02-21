@@ -34,6 +34,7 @@ def autosetup():
 		install_requires = ['%s>=%s' % x for x in dict(
 			django				= "1.2.4",
 			feedparser			= "4.1",
+			mysql_python		= "1.2.3",
 		).items()],
 		
 		# metadata for upload to PyPI
