@@ -18,7 +18,7 @@ HOST_CONFIG = dict(
 )
 
 HOSTNAME = socket.gethostname()
-TORRENT_DOWNLOAD_PATH = HOSTCONFIG[HOSTNAME]['torrent_download_path']
+TORRENT_DOWNLOAD_PATH = HOST_CONFIG[HOSTNAME]['torrent_download_path']
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
