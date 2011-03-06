@@ -16,8 +16,9 @@ HOST_CONFIG = dict(
 		torrent_download_path = '/c/torrents/watch',
 	),
 )
+HOST_CONFIG['0ptimus'] = HOST_CONFIG['optimus']
 
-HOSTNAME = socket.gethostname()
+HOSTNAME = socket.gethostname().split('.')[0]
 TORRENT_DOWNLOAD_PATH = HOST_CONFIG[HOSTNAME]['torrent_download_path']
 
 DEBUG = True
@@ -144,6 +145,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'mynock.feeds',
+    'mynock.feed_status',
     'gunicorn',
 )
 
