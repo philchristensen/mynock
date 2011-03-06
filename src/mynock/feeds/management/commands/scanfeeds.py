@@ -14,7 +14,7 @@ class Command(BaseCommand):
 	def handle(self, *args, **options):
 		for feed in Feed.objects.all():
 			for item in feed.get_new_items():
-				if(isinstance(e, Exception)):
+				if(isinstance(item, Exception)):
 					traceback.print_exc(None, self.stderr)
 				else:
 					self.stdout.write("Downloaded %s from %s\n" % (item.filename, feed.url))
