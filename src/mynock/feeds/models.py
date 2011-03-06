@@ -25,26 +25,29 @@ class Feed(models.Model):
 		
 		parser = feedparser.parse(self.url)
 		for entry in parser['items']:
-			existing = FeedItem.objects.filter(feed=self, guid=entry['guid'])
-			if(existing):
-				continue
-			
-			item = FeedItem()
-			item.feed = self
-			item.guid = entry['guid']
-			item.title = entry['title']
-			item.url = entry['link']
-
-			date_published = entry.get('published_parsed', entry.get('updated_parsed'))
-			if date_published:
-				item.pub_date = datetime.datetime(*date_published[:-3])
-			else:
-				item.pub_date = datetime.datetime.utcnow()
-
-			item.filename = item.download_attachment()
-			item.save()
-			
-			yield item
+			try:
+				existing = FeedItem.objects.filter(feed=self, guid=entry['guid'])
+				if(existing):
+					continue
+				
+				item = FeedItem()
+				item.feed = self
+				item.guid = entry['guid']
+				item.title = entry['title']
+				item.url = entry['link']
+				
+				date_published = entry.get('published_parsed', entry.get('updated_parsed'))
+				if date_published:
+					item.pub_date = datetime.datetime(*date_published[:-3])
+				else:
+					item.pub_date = datetime.datetime.utcnow()
+				
+				item.filename = item.download_attachment()
+				item.save()
+				
+				yield item
+			except Exception, e:
+				yield e
 
 class FeedItem(models.Model):
 	feed = models.ForeignKey(Feed)
