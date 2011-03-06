@@ -7,13 +7,14 @@
 import os.path
 
 from django.db import models
+from django.conf import settings
 
 import feedparser, urllib2, datetime
 
 class Feed(models.Model):
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
-    last_scan = models.DateTimeField()
+    last_scan = models.DateTimeField(optional=True)
     
     def __str__(self):
         return self.url
@@ -59,7 +60,7 @@ class FeedItem(models.Model):
     def download_attachment(self):
         data = None
         filename = os.path.basename(self.url)
-        destination = os.path.join('attachments', filename)
+        destination = os.path.join(settings.TORRENT_DOWNLOAD_PATH, filename)
         # this should probably replaced with a
         # subprocess call to a more capable web client
         s = urllib2.urlopen(self.url)

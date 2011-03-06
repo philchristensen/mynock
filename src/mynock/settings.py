@@ -6,7 +6,19 @@
 
 # Django settings for mynock project.
 
-import os.path
+import os.path, socket
+
+HOST_CONFIG = dict(
+	optimus		= dict(
+		torrent_download_path = 'attachments',
+	),
+	nas			= dict(
+		torrent_download_path = '/c/torrents/watch',
+	),
+)
+
+HOSTNAME = socket.gethostname()
+TORRENT_DOWNLOAD_PATH = HOSTCONFIG[HOSTNAME]['torrent_download_path']
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
