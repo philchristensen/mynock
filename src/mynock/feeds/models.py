@@ -26,16 +26,17 @@ class Feed(models.Model):
 		parser = feedparser.parse(self.url)
 		for entry in parser['items']:
 			try:
-				existing = FeedItem.objects.filter(feed=self, guid=entry['guid'])
+				guid = entry.get('guid', entry['link'])
 			except KeyError, e:
-				print "No GUID key in: %s" % entry
-				continue
+				raise KeyError("No GUID or LINK key in: %s" % entry)
+			
+			existing = FeedItem.objects.filter(feed=self, guid=guid)
 			if(existing):
 				continue
 			
 			item = FeedItem()
 			item.feed = self
-			item.guid = entry['guid']
+			item.guid = guid
 			item.title = entry['title']
 			item.url = entry['link']
 			
