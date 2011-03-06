@@ -14,7 +14,7 @@ import feedparser, urllib2, datetime
 class Feed(models.Model):
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
-    last_scan = models.DateTimeField(optional=True)
+    last_scan = models.DateTimeField(blank=True)
     
     def __str__(self):
         return self.url
