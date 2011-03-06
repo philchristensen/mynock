@@ -47,7 +47,7 @@ class Feed(models.Model):
 				
 				yield item
 			except Exception, e:
-				yield e
+				yield sys.exc_info()[2]
 
 class FeedItem(models.Model):
 	feed = models.ForeignKey(Feed)
