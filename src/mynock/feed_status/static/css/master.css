@@ -1,0 +1,62 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	background-color: #d0d0d0;
+}
+
+h1, h2 {
+	padding-left: 3px;
+}
+
+.item-list {
+	border-top: 1px solid black;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: #fff;
+}
+
+.item-list li {
+	padding: 3px 5px 3px 5px;
+	border-bottom: 1px solid black;
+}
+
+.item-list li:hover {
+	background-color: #696ed3;
+}
+
+.item-list .title {
+	font-weight: bold;
+	font-size: 16px;
+	padding-bottom: 4px;
+}
+
+.item-list .title:hover {
+}
+
+.item-list .filename {
+	font-weight: normal;
+	font-size: 10px;
+	color: #888;
+}
+
+.item-list li:hover .filename {
+	color: #ddd;
+}
+
+.item-list .date {
+	float: right;
+	font-size: 10px;
+	color: #888;
+}
+
+.item-list li:hover .date {
+	color: #ddd;
+}
+
+footer {
+	margin-top: 10px;
+	font-size: 10px;
+	color: #ddd;
+}
