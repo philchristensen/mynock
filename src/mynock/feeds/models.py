@@ -61,7 +61,7 @@ class FeedItem(models.Model):
 	def download_attachment(self):
 		data = None
 		self.filename = os.path.basename(self.url)
-		destination = os.path.join(settings.TORRENT_DOWNLOAD_PATH, filename)
+		destination = os.path.join(settings.TORRENT_DOWNLOAD_PATH, self.filename)
 		# this should probably replaced with a
 		# subprocess call to a more capable web client
 		s = urllib2.urlopen(self.url)
