@@ -4,7 +4,7 @@
 #
 # See LICENSE for details
 
-import os.path
+import sys, os.path
 
 from django.db import models
 from django.conf import settings
