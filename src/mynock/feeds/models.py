@@ -46,7 +46,10 @@ class Feed(models.Model):
 			else:
 				item.pub_date = datetime.datetime.utcnow()
 			
-			item.filename = item.download_attachment()
+			try:
+				item.filename = item.download_attachment()
+			except Exception, e:
+				print >>sys.stderr, "Couldn't download %s: %s" % (item.url, e)
 			item.save()
 			
 			yield item
@@ -65,7 +68,8 @@ class FeedItem(models.Model):
 	
 	def download_attachment(self):
 		data = None
-		self.filename = os.path.basename(self.url)
+		from hashlib import md5
+		self.filename = os.path.basename(self.url) or md5(self.url).hexdigest()
 		destination = os.path.join(settings.TORRENT_DOWNLOAD_PATH, self.filename)
 		# this should probably replaced with a
 		# subprocess call to a more capable web client
