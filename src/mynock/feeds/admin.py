@@ -15,7 +15,7 @@ class FeedItemAdmin(admin.ModelAdmin):
     list_display = ('filename', 'feed')
 
 class FeedAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url')
+    list_display = ('name', 'show', 'url')
 
     inlines = [
         FeedItemInline,

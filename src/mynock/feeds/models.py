@@ -9,12 +9,15 @@ import sys, os.path
 from django.db import models
 from django.conf import settings
 
+from mynock.shows.models import Show 
+
 import feedparser, urllib2, datetime
 
 class Feed(models.Model):
 	name = models.CharField(max_length=255)
 	url = models.CharField(max_length=255)
 	last_scan = models.DateTimeField(blank=True)
+	show = models.ForeignKey(Show)
 	
 	def __str__(self):
 		return self.url

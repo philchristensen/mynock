@@ -55,8 +55,24 @@ h1, h2 {
 	color: #ddd;
 }
 
+.pagination {
+	width: 100%;
+	text-align: center;
+	text-transform: lowercase;
+}
+
+.pagination .previous {
+	padding: 3px;
+	float: left;
+}
+
+.pagination .next {
+	padding: 3px;
+	float: right;
+}
+
 footer {
-	margin-top: 10px;
+	margin: 10px 0 0 5px;
 	font-size: 10px;
-	color: #ddd;
+	color: #888;
 }

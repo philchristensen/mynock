@@ -35,6 +35,7 @@ def autosetup():
 			django				= "1.2.4",
 			feedparser			= "4.1",
 			mysql_python		= "1.2.3",
+			gunicorn			= "0.12.0",
 		).items()],
 		
 		# metadata for upload to PyPI

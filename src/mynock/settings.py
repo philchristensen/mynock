@@ -9,17 +9,17 @@
 import os.path, socket
 
 HOST_CONFIG = dict(
-	optimus		= dict(
+	__default__		= dict(
 		torrent_download_path = 'attachments',
 	),
 	nas			= dict(
 		torrent_download_path = '/c/torrents/watch',
 	),
 )
-HOST_CONFIG['0ptimus'] = HOST_CONFIG['optimus']
 
 HOSTNAME = socket.gethostname().split('.')[0]
-TORRENT_DOWNLOAD_PATH = HOST_CONFIG[HOSTNAME]['torrent_download_path']
+CONFIG = HOST_CONFIG.get(HOSTNAME, HOST_CONFIG['__default__'])
+TORRENT_DOWNLOAD_PATH = CONFIG['torrent_download_path']
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'mynock.shows',
     'mynock.feeds',
     'mynock.feed_status',
     'gunicorn',

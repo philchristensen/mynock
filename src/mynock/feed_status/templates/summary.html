@@ -7,6 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/master.css">
+	
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">google.load("jquery", "1.5.1");</script>
 </head>
 
 <body>
@@ -19,7 +22,7 @@
 	<div id="main">
 		<h2>recent torrents</h2>
 		<ul class="item-list">
-		{% for item in recent_torrents %}
+		{% for item in recent_torrents.object_list %}
 		    <li>
 				<div class="title">{{ item.title }}</div>
 				<div class="date">{{ item.download_date|default:""  }}</div>
@@ -29,11 +32,37 @@
 		    <li>No recent torrents.</li>
 		{% endfor %}
 		</ul>
+		
+		<div class="pagination">
+			<span class="step-links">
+				{% if recent_torrents.has_previous %}
+					<div class="previous">
+					<a href="?page={{ recent_torrents.previous_page_number }}">previous</a>
+					</div>
+				{% endif %}
+				
+				<span class="current">
+					Page {{ recent_torrents.number }} of {{ recent_torrents.paginator.num_pages }}.
+				</span>
+				
+				{% if recent_torrents.has_next %}
+					<div class="next">
+					<a href="?page={{ recent_torrents.next_page_number }}">next</a>
+					</div>
+				{% endif %}
+			</span>
+		</div>
 	</div>
 	
 	<footer>
 		&copy; 2011 Phil Christensen
 	</footer>
   </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+</script>
 </body>
 </html>
